@@ -21,11 +21,11 @@ window.onload = function() {
 	// This function generates a function that can be used to obtain the reduction value
 	// from any compressor
 	function makeReductionFunction() {
-		// Create temporary audio context and compressor to check for properties
+		// Create temporary audio context and compressor to test for properties
 		var ac = new AudioContext();
 		var co = ac.createDynamicsCompressor();
+
 		if(co.reduction.value !== undefined) {
-			console.log('old school');
 			return function(compressor) {
 				return compressor.reduction.value;
 			}
