@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>AudioContext life cycle</title>
+		<script src="main.js" defer></script>
+	</head>
+	<body>
+		<h1><tt>AudioContext</tt> life cycle</h1>
+		<h2>Creating, suspending, resuming and closing <tt>AudioContext</tt>s</h2>
+		
+		<div>
+			<input type="button" value="Create" id="create" />
+			<p>This will create an <tt>AudioContext</tt> and a few nodes to play some sounds</p>
+		</div>
+
+		<div>
+			<input type="button" value="Suspend" id="suspend" />
+			<p>This will suspend the existing <tt>AudioContext</tt>. Sounds should be paused.</p>
+		</div>
+
+		<div>
+			<input type="button" value="Resume" id="resume" />
+			<p>This will resume the paused <tt>AudioContext</tt>. Sounds should resume where they were left.</p>
+		</div>
+
+		<div>
+			<input type="button" value="Close" id="close" />
+			<p>This will close the existing <tt>AudioContext</tt>. Sounds should stop and resources associated to the context be disposed of.</p>
+		</div>
+	</body>
+</html>
+
