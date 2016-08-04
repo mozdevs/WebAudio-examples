@@ -25,17 +25,17 @@ window.onload = function() {
 	oscillator.connect(gain).connect(oac.destination);
 
 	var attackTime = 0.1 * duration;
-	var decayTime = 0.3 * duration;
+	var decayTime = 0.2 * duration;
 
 	// Setting up some envelopes for the gain
 	gain.gain.setValueAtTime(0, now);
 	gain.gain.linearRampToValueAtTime(1, now + attackTime);
 	gain.gain.linearRampToValueAtTime(0.5, now + attackTime + decayTime);
-	gain.gain.linearRampToValueAtTime(0, now + duration);
+	gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
 
 	// And for the oscillator frequency
-	oscillator.frequency.setValueAtTime(300, now);
-	oscillator.frequency.linearRampToValueAtTime(20, now + duration);
+	oscillator.frequency.setValueAtTime(250, now);
+	oscillator.frequency.linearRampToValueAtTime(1, now + duration);
 	
 	// And get the oscillator to play so we can see some rendered sound!
 	oscillator.start(now);
