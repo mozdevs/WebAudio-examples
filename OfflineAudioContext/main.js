@@ -12,6 +12,8 @@ window.onload = function() {
 	var spanNumSamples = document.getElementById('numSamples');
 	spanNumSamples.innerHTML = oac.length;
 
+	var spanNumSeconds = document.getElementById('numSeconds');
+	
 	// Since both AudioContext and OfflineAudioContext extend the same base class,
 	// you can create nodes using the same methods!
 	var gain = oac.createGain();
@@ -38,8 +40,12 @@ window.onload = function() {
 	// And get the oscillator to play so we can see some rendered sound!
 	oscillator.start(now);
 	
+	var t0 = performance.now();
+
 	oac.startRendering().then((audioBuffer) => {
-		console.log('Im done', audioBuffer);
+		var t1 = performance.now();
+		var diff = t1 - t0;
+		numSeconds.innerHTML = (diff / 1000).toFixed(2);
 
 		var data = [];
 		var channelData = audioBuffer.getChannelData(0);
